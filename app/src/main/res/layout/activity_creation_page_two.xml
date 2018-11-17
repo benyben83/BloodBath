@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:orientation="vertical"
+    tools:context=".activities.CreationPageTwo">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_marginTop="35dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:layout_marginBottom="25dp"
+            android:fontFamily="@font/wild"
+            android:text="BLOODBATH"
+            android:textAlignment="center"
+            android:textColor="#f70505"
+            android:textSize="34dp" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/wild"
+            android:text="Help"
+            android:onClick="tutorial"
+            android:layout_gravity="center"
+            android:textColor="#000000"
+            android:background="@drawable/bt_generic"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tvDisplayName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/wild"
+                android:text="Nom ="
+                android:textColor="#f70505" />
+            <TextView
+                android:id="@+id/tvDisplayRace"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/wild"
+                android:text="Race="
+                android:textColor="#f70505" />
+            <TextView
+                android:id="@+id/tvDisplayStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/wild"
+                android:text="Style ="
+                android:textColor="#f70505" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tvDisplayDexterity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/wild"
+                android:text="Dexterity ="
+                android:textColor="#f70505" />
+            <TextView
+                android:id="@+id/tvDisplayStamina"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/wild"
+                android:text="Stamina ="
+                android:textColor="#f70505" />
+            <TextView
+                android:id="@+id/tvDisplayIntelligence"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/wild"
+                android:text="Intelligence ="
+                android:textColor="#f70505" />
+            <TextView
+                android:id="@+id/tvDisplayKnowledge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/wild"
+                android:text="Knowledge ="
+                android:textColor="#f70505" />
+        </LinearLayout>
+
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/wild"
+        android:text="Choose Race"
+        android:textAlignment="center"
+        android:textColor="#f70505"
+        android:textSize="18dp" />
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/scrollView1"
+        android:layout_width="fill_parent"
+        android:layout_height="120dp"
+        android:layout_marginTop="15dp">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <Button
+                    android:id="@+id/btHuman"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/bt_generic"
+                    android:fontFamily="@font/wild"
+                    android:onClick="chooseRace"
+                    android:text="Human"
+                    android:textColor="#000000" />
+                <Button
+                    android:id="@+id/btElf"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/bt_generic"
+                    android:fontFamily="@font/wild"
+                    android:onClick="chooseRace"
+                    android:text="  Elf (Dext+1, Stmn-1, Knwl-1)"
+                    android:textColor="#000000" />
+                <Button
+                    android:id="@+id/btDwarf"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/bt_generic"
+                    android:fontFamily="@font/wild"
+                    android:onClick="chooseRace"
+                    android:text="  Dwarf (Stmn+1, Dext-1, Intl-1)"
+                    android:textColor="#000000" />
+                <Button
+                    android:id="@+id/btGnome"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/bt_generic"
+                    android:fontFamily="@font/wild"
+                    android:onClick="chooseRace"
+                    android:text="  Gnome (Intl+1,Stam-1, Know-1)"
+                    android:textColor="#000000" />
+                <Button
+                    android:id="@+id/btHalfling"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/bt_generic"
+                    android:fontFamily="@font/wild"
+                    android:onClick="chooseRace"
+                    android:text="  Halfling (Knwl+1, Dext-1, Intl-1)"
+                    android:textColor="#000000" />
+                <Button
+                    android:id="@+id/btOrc"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/bt_generic"
+                    android:onClick="chooseRace"
+                    android:fontFamily="@font/wild"
+                    android:text="Orc (Dext+2, Knwl-4)"
+                    android:textColor="#000000" />
+                <Button
+                    android:id="@+id/btFairy"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/bt_generic"
+                    android:fontFamily="@font/wild"
+                    android:onClick="chooseRace"
+                    android:text="  Fairy (Intl+2, Stmn-4)"
+                    android:textColor="#000000" />
+                <Button
+                    android:id="@+id/btTroll"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/bt_generic"
+                    android:fontFamily="@font/wild"
+                    android:onClick="chooseRace"
+                    android:text="  Troll (Stmn+2, Dext-2, Intl-2)"
+                    android:textColor="#000000" />
+                <Button
+                    android:id="@+id/btTentacular"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/bt_generic"
+                    android:fontFamily="@font/wild"
+                    android:onClick="chooseRace"
+                    android:text="  Tentacular (Knwl+2, Dext-2, Intl-2)"
+                    android:textColor="#000000" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/wild"
+        android:text="Choose Style"
+        android:textAlignment="center"
+        android:textColor="#f70505"
+        android:textSize="18dp" />
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/scrollView2"
+        android:layout_width="fill_parent"
+        android:layout_height="120dp"
+        android:layout_marginTop="15dp">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <Button
+                    android:id="@+id/btPower"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/bt_generic"
+                    android:fontFamily="@font/wild"
+                    android:onClick="chooseStyle"
+                    android:text="Power"
+                    android:textColor="#000000" />
+                <Button
+                    android:id="@+id/btTechnics"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/bt_generic"
+                    android:fontFamily="@font/wild"
+                    android:onClick="chooseStyle"
+                    android:text="Technics"
+                    android:textColor="#000000" />
+                <Button
+                    android:id="@+id/btLooks"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/bt_generic"
+                    android:fontFamily="@font/wild"
+                    android:onClick="chooseStyle"
+                    android:text="Looks"
+                    android:textColor="#000000" />
+                <Button
+                    android:id="@+id/btScience"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/bt_generic"
+                    android:fontFamily="@font/wild"
+                    android:onClick="chooseStyle"
+                    android:text="Science"
+                    android:textColor="#000000" />
+                <Button
+                    android:id="@+id/btMagic"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/bt_generic"
+                    android:fontFamily="@font/wild"
+                    android:onClick="chooseStyle"
+                    android:text="Magic"
+                    android:textColor="#000000" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btContinue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/bt_generic"
+            android:fontFamily="@font/wild"
+            android:onClick="proceed"
+            android:text="Continue"
+            android:textColor="#000000" />
+        <Button
+            android:id="@+id/btReturn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/bt_generic"
+            android:fontFamily="@font/wild"
+            android:onClick="goBack"
+            android:text="Return"
+            android:textColor="#000000" />
+    </LinearLayout>
+</LinearLayout>
