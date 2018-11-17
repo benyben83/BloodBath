@@ -40,7 +40,7 @@ public class Databases extends SQLiteOpenHelper {
                 ",  race TEXT" +
                 ")";
         db.execSQL(sql);
-        db.execSQL("INSERT INTO saves (id,name,dexterity,stamina,intelligence,knowledge,style1,style2, style3, style4, style5, race ) values ('1','momo','10','10','10','10','rien','rien', 'rien', 'rien', 'rien', 'juif')");
+        db.execSQL("INSERT INTO saves (id,name,dexterity,stamina,intelligence,knowledge,style1,style2, style3, style4, style5, race ) values ('1','momo','10','10','10','10','rien','rien', 'rien', 'rien', 'rien', 'human')");
 
     }
 
