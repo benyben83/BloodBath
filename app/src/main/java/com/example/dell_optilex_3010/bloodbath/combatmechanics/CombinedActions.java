@@ -7,9 +7,13 @@ import com.example.dell_optilex_3010.bloodbath.charactercreation.Character;
 import java.util.Random;
 
 public class CombinedActions {
-    TestSortControl test = new TestSortControl();
 
-    public void combinedPowerOne(Character player, Character opponent, int[] variables,  String[] actionsstored, TextView tvArena) { // "Inquisition" : if the player has prepared barbaric fire and his opponent is magical, the latter suffers 1 automatic wound/rd
+
+    public CombinedActions() {
+    }
+
+    public void combinedPowerOne(Character player, Character opponent, int[] variables, String[] actionsstored, TextView tvArena) { // "Inquisition" : if the player has prepared barbaric fire and his opponent is magical, the latter suffers 1 automatic wound/rd
+        TestSortControl test = new TestSortControl();
         if ((test.testingPreparedAction(player, actionsstored, "Burn the witch !")) && test.testingStyle(opponent, "Magic")) {
             variables[2]++;
             tvArena.append(player.getName() + " has brought the local inquisition for barbecue, as it just so happens that we found a witch !\n");
@@ -19,6 +23,7 @@ public class CombinedActions {
     }
 
     public void combinedPowerTwo(Character player, Character opponent, int[] variables, String[] actionsstored, TextView tvArena) { // "Ancient rites" : if the player has prepared fetish and his opponent is magic, he gets +6 in every stat
+        TestSortControl test = new TestSortControl();
         if ((test.testingPreparedAction(player, actionsstored, "Fetish")) && test.testingStyle(opponent, "Magic")) {
             variables[3] += 6;
             variables[4] += 6;

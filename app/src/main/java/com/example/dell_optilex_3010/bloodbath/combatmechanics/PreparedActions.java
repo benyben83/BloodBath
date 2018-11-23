@@ -7,10 +7,13 @@ import com.example.dell_optilex_3010.bloodbath.charactercreation.Character;
 import java.util.Random;
 
 public class PreparedActions {
-    TestSortControl test = new TestSortControl();
+
+
+    public PreparedActions() {
+    }
 
     public void preparedPowerOne(Character player, Character opponent, int[] variables, Random dice, TextView tvArena) { // "Barbaric fire" : free attack at +6 dext if opponents uses science
-
+        TestSortControl test = new TestSortControl();
         if (test.testingStyle(opponent, "Science'")) {
 
             if ((dice.nextInt() + player.getDexterity() + 6+variables[3]) >= (dice.nextInt() + opponent.getStamina())+variables[8]) {
@@ -20,7 +23,8 @@ public class PreparedActions {
         }
     }
 
-    public void preparedPowerTwo(Character player, Character opponent, int[] variables, Random dice, TextView tvArena, String[]actionsStored) { // "Battle rage" : free attack if player wounded
+    public void preparedPowerTwo(Character player, Character opponent, int[] variables, Random dice, TextView tvArena) { // "Battle rage" : free attack if player wounded
+        TestSortControl test = new TestSortControl();
         String statement = player.getName() + " is too healthy to react...\n";
         if (test.testingWounds(player, player, variables)) {
             statement = player.getName() + " gets mad at the sight of blood and totally freaks out !\n";
@@ -29,6 +33,6 @@ public class PreparedActions {
                 variables[2]++;
 
             }
-        }
+        }tvArena.append(statement);
     }
 }

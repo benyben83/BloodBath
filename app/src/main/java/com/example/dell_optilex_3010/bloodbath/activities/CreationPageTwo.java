@@ -17,30 +17,29 @@ import com.example.dell_optilex_3010.bloodbath.charactercreation.Race;
 
 public class CreationPageTwo extends AppCompatActivity {
     private Character player;
-    private  TextView tvDisplayRace;
-    private  TextView tvDisplayName;
-    private  TextView tvDisplayDexterity;
-    private  TextView tvDisplayStamina;
-    private  TextView tvDisplayIntelligence;
-    private  TextView tvDisplayKnowledge;
-    private  TextView tvDisplayStyle;
-    private  Race activeRace ;  // used when switching races in order to reinitialize stats between changes
-    private  Race human = new Race("Human", 0, 0, 0, 0);  //list of available races
-    private  Race elf = new Race("Elf", 1, -1, 0, -1);
-    private  Race gnome = new Race("Gnome", 0, -1, 1, -1);
+    private TextView tvDisplayRace;
+    private TextView tvDisplayName;
+    private TextView tvDisplayDexterity;
+    private TextView tvDisplayStamina;
+    private TextView tvDisplayIntelligence;
+    private TextView tvDisplayKnowledge;
+    private TextView tvDisplayStyle;
+    private Race activeRace;  // used when switching races in order to reinitialize stats between changes
+    private Race human = new Race("Human", 0, 0, 0, 0);  //list of available races
+    private Race elf = new Race("Elf", 1, -1, 0, -1);
+    private Race gnome = new Race("Gnome", 0, -1, 1, -1);
     private Race halfling = new Race("Halfling", -1, 0, -1, 1);
-    private  Race troll = new Race("Troll", -2, 2, -2, 0);
-    private  Race fairy = new Race("Fairy", 0, 4, 2, 0);
-    private  Race tentacular = new Race("Tentacular", -2, 0, -2, 2);
-    private  Race dwarf = new Race("Dwarf", -1, 1, -1, 0);
-    private  Race orc = new Race("Orc", 2, 0, 0, 4);
+    private Race troll = new Race("Troll", -2, 2, -2, 0);
+    private Race fairy = new Race("Fairy", 0, 4, 2, 0);
+    private Race tentacular = new Race("Tentacular", -2, 0, -2, 2);
+    private Race dwarf = new Race("Dwarf", -1, 1, -1, 0);
+    private Race orc = new Race("Orc", 2, 0, 0, 4);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_creation_page_two);
         player = new Character(this);   //needed to store character data from database
-
         activeRace = human;
         tvDisplayName = findViewById(R.id.tvDisplayName);
         tvDisplayRace = findViewById(R.id.tvDisplayRace);
@@ -49,19 +48,15 @@ public class CreationPageTwo extends AppCompatActivity {
         tvDisplayIntelligence = findViewById(R.id.tvDisplayIntelligence);
         tvDisplayKnowledge = findViewById(R.id.tvDisplayKnowledge);
         tvDisplayStyle = findViewById(R.id.tvDisplayStyle);
+        player.loadCharacter(1);      //retrieving character data from database
+        player.setRace("Human");       // default setting, to prevent crash
+        tvDisplayName.setText("Name : " + player.getName());  // synchronizing stats display with character data
+        tvDisplayRace.setText("Race : " + player.getRace());
+        tvDisplayDexterity.setText("Dexterity : " + String.valueOf(player.getDexterity()));
+        tvDisplayStamina.setText("Stamina : " + String.valueOf(player.getStamina()));
+        tvDisplayIntelligence.setText("Intelligence : " + String.valueOf(player.getIntelligence()));
+        tvDisplayKnowledge.setText("Knowledge : " + String.valueOf(player.getKnowledge()));
 
-        try {
-            player.loadCharacter(1);      //retrieving character data from database
-            player.setRace("Human");       // default setting, to prevent crash
-            tvDisplayName.setText("Name : " + player.getName());  // synchronizing stats display with character data
-            tvDisplayRace.setText("Race : " + player.getRace());
-            tvDisplayDexterity.setText("Dexterity : " + String.valueOf(player.getDexterity()));
-            tvDisplayStamina.setText("Stamina : " + String.valueOf(player.getStamina()));
-            tvDisplayIntelligence.setText("Intelligence : " + String.valueOf(player.getIntelligence()));
-            tvDisplayKnowledge.setText("Knowledge : " + String.valueOf(player.getKnowledge()));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     public void applyRace(Race race) {
@@ -149,12 +144,12 @@ public class CreationPageTwo extends AppCompatActivity {
         }
     }
 
-      public void proceed(View view) {
-          soundingOk();
-          player.saveCharacter(player.getId());
-          Intent i = new Intent(this, CreationRecap.class);
-          startActivity(i);
-      }
+    public void proceed(View view) {
+        soundingOk();
+        player.saveCharacter(player.getId());
+        Intent i = new Intent(this, CreationRecap.class);
+        startActivity(i);
+    }
 
     public void goBack(View view) {
         soundingNotOk();

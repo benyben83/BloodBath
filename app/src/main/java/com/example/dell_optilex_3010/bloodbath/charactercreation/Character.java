@@ -232,6 +232,7 @@ public class Character {
     public void saveCharacter(int saveNumber) { // used to transfer character data to database
         try {
             ContentValues values = new ContentValues();
+            values.put("id", getId());
             values.put("name", getName());
             values.put("dexterity", getDexterity());
             values.put("stamina", getStamina());
@@ -257,14 +258,14 @@ public class Character {
             values.put("action_ten", getActionTen());
 
 
-            db.update("saves", values, "id=" + getId(), null);
+            db.update("saves", values, "id=1", null);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     public void loadCharacter(int saveNumber) { // used to extract character data from database
-        String querySql = "select * from saves where id =" + getLevel();
+        String querySql = "select * from saves where id ="+saveNumber;
         Cursor cursor = db.rawQuery(querySql, null);
         try {
             cursor.moveToFirst();

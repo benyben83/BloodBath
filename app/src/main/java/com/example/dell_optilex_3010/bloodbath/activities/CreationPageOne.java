@@ -31,6 +31,7 @@ public class CreationPageOne extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_creation_page_one);
         player = new Character(this);               // create a character used to store character creation data
+        player.loadCharacter(1);
         tvDexterityScore = findViewById(R.id.tvDexterityScore);
         tvStaminaScore = findViewById(R.id.tvStaminaScore);
         tvIntelligenceScore = findViewById(R.id.tvIntelligenceScore);
