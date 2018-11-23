@@ -51,7 +51,7 @@ public class CreationPageTwo extends AppCompatActivity {
         tvDisplayStyle = findViewById(R.id.tvDisplayStyle);
 
         try {
-            player.loadCharacter();      //retrieving character data from database
+            player.loadCharacter(1);      //retrieving character data from database
             player.setRace("Human");       // default setting, to prevent crash
             tvDisplayName.setText("Name : " + player.getName());  // synchronizing stats display with character data
             tvDisplayRace.setText("Race : " + player.getRace());
@@ -151,7 +151,7 @@ public class CreationPageTwo extends AppCompatActivity {
 
       public void proceed(View view) {
           soundingOk();
-          player.saveCharacter();
+          player.saveCharacter(player.getId());
           Intent i = new Intent(this, CreationRecap.class);
           startActivity(i);
       }

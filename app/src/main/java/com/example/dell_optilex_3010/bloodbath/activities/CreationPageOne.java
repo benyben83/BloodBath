@@ -142,7 +142,7 @@ public class CreationPageOne extends AppCompatActivity {
         player.setStamina(Integer.parseInt(valueOf(tvStaminaScore.getText())));
         player.setIntelligence(Integer.parseInt(valueOf(tvIntelligenceScore.getText())));
         player.setKnowledge(Integer.parseInt(valueOf(tvKnowledgeScore.getText())));
-        player.saveCharacter();
+        player.saveCharacter(player.getId());
         Intent i = new Intent(this, CreationPageTwo.class);
         startActivity(i);
     }

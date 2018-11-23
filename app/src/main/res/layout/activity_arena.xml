@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:orientation="vertical"
+    tools:context=".activities.Arena">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="35dp"
+        android:fontFamily="@font/wild"
+        android:text="Bloodbath"
+        android:textAlignment="center"
+        android:textColor="#f70505"
+        android:textSize="42dp" />
+
+    <TextView
+        android:id="@+id/tvArena"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:scrollbars="vertical"
+        android:fontFamily="@font/wild"
+        android:text="New fight"
+        android:textAlignment="center"
+        android:textColor="#f70505"
+        android:textSize="32dp" />
+
+    <Button
+        android:id="@+id/btAction"
+        android:visibility="invisible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/bt_generic"
+        android:fontFamily="@font/wild"
+        android:text="Actions"
+        android:textColor="#000000" />
+    <Button
+        android:id="@+id/btBringIt"
+        android:visibility="invisible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/bt_generic"
+        android:fontFamily="@font/wild"
+        android:onClick="opponentTurn"
+        android:text="Bring it !"
+        android:textColor="#000000" />
+    <Button
+        android:id="@+id/btFirstRound"
+        android:onClick="startRound"
+        android:visibility="visible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/bt_generic"
+        android:fontFamily="@font/wild"
+        android:text="New round !"
+        android:textColor="#000000" />
+</LinearLayout>

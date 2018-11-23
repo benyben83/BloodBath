@@ -18,10 +18,22 @@ public class Character {
     private String style4;
     private String style5;
     private String race;
-    private SQLiteDatabase db ;
+    private int health;
+    private int level;
+    private String actionOne;
+    private String actionTwo;
+    private String actionThree;
+    private String actionFour;
+    private String actionFive;
+    private String actionSix;
+    private String actionSeven;
+    private String actionEight;
+    private String actionNine;
+    private String actionTen;
+    private SQLiteDatabase db;
 
     public Character(Context c) {
-        Databases databases =  Databases.getInstance(c);
+        Databases databases = Databases.getInstance(c);
         db = databases.getWritableDatabase();
     }
 
@@ -121,7 +133,103 @@ public class Character {
         this.race = race;
     }
 
-    public void saveCharacter() {
+    public int getHealth() {
+        return health;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public String getActionOne() {
+        return actionOne;
+    }
+
+    public void setActionOne(String actionOne) {
+        this.actionOne = actionOne;
+    }
+
+    public String getActionTwo() {
+        return actionTwo;
+    }
+
+    public void setActionTwo(String actionTwo) {
+        this.actionTwo = actionTwo;
+    }
+
+    public String getActionThree() {
+        return actionThree;
+    }
+
+    public void setActionThree(String actionThree) {
+        this.actionThree = actionThree;
+    }
+
+    public String getActionFour() {
+        return actionFour;
+    }
+
+    public void setActionFour(String actionFour) {
+        this.actionFour = actionFour;
+    }
+
+    public String getActionFive() {
+        return actionFive;
+    }
+
+    public void setActionFive(String actionFive) {
+        this.actionFive = actionFive;
+    }
+
+    public String getActionSix() {
+        return actionSix;
+    }
+
+    public void setActionSix(String actionSix) {
+        this.actionSix = actionSix;
+    }
+
+    public String getActionSeven() {
+        return actionSeven;
+    }
+
+    public void setActionSeven(String actionSeven) {
+        this.actionSeven = actionSeven;
+    }
+
+    public String getActionEight() {
+        return actionEight;
+    }
+
+    public void setActionEight(String actionEight) {
+        this.actionEight = actionEight;
+    }
+
+    public String getActionNine() {
+        return actionNine;
+    }
+
+    public void setActionNine(String actionNine) {
+        this.actionNine = actionNine;
+    }
+
+    public String getActionTen() {
+        return actionTen;
+    }
+
+    public void setActionTen(String actionTen) {
+        this.actionTen = actionTen;
+    }
+
+    public void saveCharacter(int saveNumber) { // used to transfer character data to database
         try {
             ContentValues values = new ContentValues();
             values.put("name", getName());
@@ -129,20 +237,34 @@ public class Character {
             values.put("stamina", getStamina());
             values.put("intelligence", getIntelligence());
             values.put("knowledge", getKnowledge());
-            values.put("style1", getStyle1());
-            values.put("style2", getStyle2());
-            values.put("style3", getStyle3());
-            values.put("style4", getStyle4());
-            values.put("style5", getStyle5());
+            values.put("style_one", getStyle1());
+            values.put("style_two", getStyle2());
+            values.put("style_three", getStyle3());
+            values.put("style_four", getStyle4());
+            values.put("style_five", getStyle5());
             values.put("race", getRace());
-            db.update("saves", values, "id=1", null);
+            values.put("health", getHealth());
+            values.put("level", getLevel());
+            values.put("action_one", getActionOne());
+            values.put("action_two", getActionTwo());
+            values.put("action_three", getActionThree());
+            values.put("action_four", getActionFour());
+            values.put("action_five", getActionFive());
+            values.put("action_six", getActionSix());
+            values.put("action_seven", getActionSeven());
+            values.put("action_eight", getActionEight());
+            values.put("action_nine", getActionNine());
+            values.put("action_ten", getActionTen());
+
+
+            db.update("saves", values, "id=" + getId(), null);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void loadCharacter() {
-        String querySql = "select * from saves where id =1";
+    public void loadCharacter(int saveNumber) { // used to extract character data from database
+        String querySql = "select * from saves where id =" + getLevel();
         Cursor cursor = db.rawQuery(querySql, null);
         try {
             cursor.moveToFirst();
@@ -158,6 +280,18 @@ public class Character {
             setStyle4(cursor.getString(9));
             setStyle5(cursor.getString(10));
             setRace(cursor.getString(11));
+            setHealth(cursor.getInt(12));
+            setLevel(cursor.getInt(13));
+            setActionOne(cursor.getString(14));
+            setActionTwo(cursor.getString(15));
+            setActionThree(cursor.getString(16));
+            setActionFour(cursor.getString(17));
+            setActionFive(cursor.getString(18));
+            setActionSix(cursor.getString(19));
+            setActionSeven(cursor.getString(20));
+            setActionEight(cursor.getString(21));
+            setActionNine(cursor.getString(22));
+            setActionTen(cursor.getString(23));
         } catch (Exception e) {
             e.printStackTrace();
         }

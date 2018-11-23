@@ -24,7 +24,7 @@ public class CreationRecap extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_creation_recap);
         player = new Character(this);
-        player.loadCharacter();
+        player.loadCharacter(1);
         tvDexterity = findViewById(R.id.tvDexterity);
         tvIntelligence = findViewById(R.id.tvIntelligence);
         tvName = findViewById(R.id.tvName);
@@ -43,8 +43,8 @@ public class CreationRecap extends AppCompatActivity {
     }
     public void proceed (View view){
         soudingOk();
-        player.saveCharacter();
-        Intent i = new Intent(this, CreationRecap.class);
+        player.saveCharacter(player.getId());
+        Intent i = new Intent(this, Arena.class);
         startActivity(i);
     }
     public void  goBack(View view){

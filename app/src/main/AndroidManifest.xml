@@ -23,7 +23,10 @@
             android:name=".services.MusicPlayer"
             android:enabled="true" />
 
-        <activity android:name=".activities.CreationRecap"></activity>
+        <activity android:name=".activities.CreationRecap" />
+        <activity android:name=".activities.Arena" />
+        <activity android:name=".activities.WinnerActivity" />
+        <activity android:name=".activities.LooserActivity"></activity>
     </application>
 
 </manifest>
