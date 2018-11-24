@@ -48,7 +48,7 @@
             android:background="@drawable/bt_generic"
             android:textColor="#000000"
             android:layout_margin="10dp"
-            android:onClick="StartNewGame"/>
+            android:onClick="startNewGame"/>
 
         <Button
             android:id="@+id/btLoadExistingGame"
@@ -60,7 +60,7 @@
             android:textColor="#000000"
             android:background="@drawable/bt_generic"
             android:layout_margin="10dp"
-            android:onClick="StartNewGame"/>
+            android:onClick="startNewGame"/>
         <Button
             android:id="@+id/btQuit"
             android:layout_width="150dp"
@@ -69,7 +69,7 @@
             android:fontFamily="@font/wild"
             android:text="Quit"
             android:textColor="#000000"
-            android:onClick="LeaveApp"
+            android:onClick="leaveApp"
             android:background="@drawable/bt_generic"
             android:layout_margin="10dp"/>
 

@@ -9,9 +9,6 @@ import java.util.Random;
 public class PreparedActions {
 
 
-    public PreparedActions() {
-    }
-
     public void preparedPowerOne(Character player, Character opponent, int[] variables, Random dice, TextView tvArena) { // "Barbaric fire" : free attack at +6 dext if opponents uses science
                  if ((dice.nextInt() + player.getDexterity() + 6+variables[3]) >= (dice.nextInt() + opponent.getStamina())+variables[8]) {
                 tvArena.append("Science is wrong, " + opponent.getName() + " shall burn\n");

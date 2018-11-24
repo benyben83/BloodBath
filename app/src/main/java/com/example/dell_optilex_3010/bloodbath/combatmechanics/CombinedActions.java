@@ -4,13 +4,9 @@ import android.widget.TextView;
 
 import com.example.dell_optilex_3010.bloodbath.charactercreation.Character;
 
-import java.util.Random;
 
 public class CombinedActions {
 
-
-    public CombinedActions() {
-    }
 
     public void combinedPowerOne(Character player, Character opponent, int[] variables, String[] actionsstored, TextView tvArena) { // "Inquisition" : if the player has prepared barbaric fire and his opponent is magical, the latter suffers 1 automatic wound/rd
         TestSortControl test = new TestSortControl();

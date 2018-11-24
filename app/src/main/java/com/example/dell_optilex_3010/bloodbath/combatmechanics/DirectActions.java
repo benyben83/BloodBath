@@ -1,5 +1,4 @@
 package com.example.dell_optilex_3010.bloodbath.combatmechanics;
-import com.example.dell_optilex_3010.bloodbath.combatmechanics.TestSortControl;
 import android.widget.TextView;
 
 import java.util.Random;
@@ -8,9 +7,6 @@ import com.example.dell_optilex_3010.bloodbath.charactercreation.Character;
 
 public class DirectActions {
 
-
-    public DirectActions() {
-    }
 
     public void directPowerOne(Character player, Character opponent, int[] variables, Random dice, TextView tvArena) {  // "Rush" = simple attack
         if ((dice.nextInt() + player.getDexterity() + variables[3]) >= (dice.nextInt() + opponent.getStamina() + variables[8])) {

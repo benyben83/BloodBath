@@ -9,9 +9,6 @@ import java.util.Random;
 public class PassiveActions {
 
 
-    public PassiveActions() {
-    }
-
     public void passivePowerOne(Character player, Character opponent, int[] variables, Random dice, TextView tvArena) {  //"Loudness" = if opponent is magical and player succeeds in a dext versus stmn attack, opponent suffers intel permanent -3
         if ((dice.nextInt() + player.getDexterity() + variables[3]) >= (dice.nextInt() + opponent.getStamina() + variables[8])) {
             variables[9] -= 6;

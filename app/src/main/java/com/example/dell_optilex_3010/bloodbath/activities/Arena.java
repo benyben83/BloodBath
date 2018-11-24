@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.PopupMenu;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.dell_optilex_3010.bloodbath.R;
 import com.example.dell_optilex_3010.bloodbath.charactercreation.Character;
@@ -19,17 +18,17 @@ import com.example.dell_optilex_3010.bloodbath.combatmechanics.TestSortControl;
 import java.util.Random;
 
 public class Arena extends AppCompatActivity {
-    Random dice = new Random(1 - 20);
-    OpponentActions opponentActions = new OpponentActions();
+    private Random dice = new Random(1 - 20);
+    private OpponentActions opponentActions = new OpponentActions();
     private int[] combatVariables = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};  // round counter/player wounds/defender wounds/temporary attacker bonus (dext)/temporary attacker bonus (stmn)/temporary attacker bonus (intl)/temporary attacker bonus (knwl)/temporary defender bonus (dext)/temporary defender bonus (stmn)/temporary defender bonus (intl)/temporary defender bonus (knwl)/round process counter
     private String[] preparedActionsAndAdvantage = {"", "", "", "", "", "", ""};   // first slot owner/first slot action stocked / second slot owner / second slot action stored / third slot owner / third slot action stored/Advantaged player
     private Character player;
     private Character opponent;
-    TestSortControl test;
-    TextView tvArena;
-    Button startButton;
-    Button actionButton;
-    Button opponentTurn;
+    private TestSortControl test;
+    private TextView tvArena;
+    private Button startButton;
+    private Button actionButton;
+    private Button opponentTurn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +47,7 @@ public class Arena extends AppCompatActivity {
         actionButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) { // the menu sorts and fills up with the player's character on click
                 PopupMenu popup = new PopupMenu(Arena.this, actionButton);
                 popup.getMenuInflater().inflate(R.menu.menu_display, popup.getMenu());
                 popup.getMenu().getItem(test.actionsMenuSorter(player.getActionOne())).getSubMenu().add(player.getActionOne());
@@ -66,14 +65,18 @@ public class Arena extends AppCompatActivity {
 
 
                     @Override
-                    public boolean onMenuItemClick(MenuItem item) {
-                        test.actionManager(player, opponent, item.getTitle().toString(), dice, combatVariables, preparedActionsAndAdvantage, tvArena);
+                    public boolean onMenuItemClick(MenuItem item) { // player's turn
+                        test.actionManager(player, opponent, item.getTitle().toString(), dice, combatVariables, preparedActionsAndAdvantage, tvArena); // apply player's choice
+                        actionButton.setVisibility(View.INVISIBLE); // player button disappears
+                        if (combatVariables[11] ==0) { // if the opponent hasn't played yet
 
-                        actionButton.setVisibility(View.INVISIBLE);
-                        if (combatVariables[11] ==0) {
-                            opponentTurn.setVisibility(View.VISIBLE);
-                        } else {
-                            startButton.setVisibility(View.VISIBLE);
+
+                            // here will be victory tester
+
+
+                            opponentTurn.setVisibility(View.VISIBLE); // opponent's turn
+                        } else { // if the opponent has played already
+                            startButton.setVisibility(View.VISIBLE); // new round
                         }combatVariables[11]++;
                         test.reactionsApplier(player, opponent, test.actionInventoryChecker(player, preparedActionsAndAdvantage), combatVariables, dice, tvArena, preparedActionsAndAdvantage); // testing for opponent reactions
 
@@ -95,12 +98,12 @@ public class Arena extends AppCompatActivity {
     }
 
     public void startRound(View view) {
-        combatVariables[0]++;
+        combatVariables[0]++;// new round
         combatVariables[11] = 0; // beginning of a new round
         tvArena.append("\nRound " + (String.valueOf(combatVariables[0])) + "\n\n");
         startButton.setVisibility(View.INVISIBLE);
         test.determiningAdvantage(player, opponent, combatVariables, dice, preparedActionsAndAdvantage, tvArena); // determines who has the advantage
-        if (preparedActionsAndAdvantage[6].equals(player.getName())) {
+        if (preparedActionsAndAdvantage[6].equals(player.getName())) { // if the player has the advantage he plays first
             actionButton.setVisibility(View.VISIBLE);
         } else {
             opponentTurn.setVisibility(View.VISIBLE);
@@ -110,12 +113,12 @@ public class Arena extends AppCompatActivity {
 
     public void opponentTurn(View view) {
 
-        opponentActions.jeanMiFrappe(player, opponent, dice, combatVariables, tvArena);
+        opponentActions.jeanMiFrappe(player, opponent, dice, combatVariables, tvArena); // opponent plays his turn
         test.reactionsApplier(opponent, player, test.actionInventoryChecker(opponent, preparedActionsAndAdvantage), combatVariables, dice, tvArena, preparedActionsAndAdvantage);// testing for player reactions
         opponentTurn.setVisibility(View.INVISIBLE);
-        if (combatVariables[11] ==0) {
+        if (combatVariables[11] ==0) { //if player hasn't played yet it's his turn
             actionButton.setVisibility(View.VISIBLE);
-        } else {
+        } else { // else new round
             startButton.setVisibility(View.VISIBLE);
         }   combatVariables[11]++;
     }

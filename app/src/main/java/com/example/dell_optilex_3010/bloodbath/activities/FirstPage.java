@@ -19,24 +19,24 @@ public class FirstPage extends AppCompatActivity {
 
     }
 
-    public void StartNewGame(View view) {  // Proceed to new character creation
-        SoundingOK();
+    public void startNewGame(View view) {  // Proceed to new character creation
+        soundingOK();
         Intent i = new Intent(this, CreationPageOne.class);
         startActivity(i);
     }
 
-    public void LeaveApp(View view) {  // closes the App
-        SoundingNotOk();
+    public void leaveApp(View view) {  // closes the App
+        soundingNotOk();
         finish();
     }
 
-    public void SoundingOK() {
+    public void soundingOK() {
         MediaPlayer buttonSound;
         buttonSound = MediaPlayer.create(this, R.raw.button_sound_ok);
         buttonSound.start();
     }
 
-    public void SoundingNotOk() {
+    public void soundingNotOk() {
         MediaPlayer buttonSound;
         buttonSound = MediaPlayer.create(this, R.raw.button_sound_not_ok);
         buttonSound.start();

@@ -1,6 +1,5 @@
 package com.example.dell_optilex_3010.bloodbath.combatmechanics;
 
-import com.example.dell_optilex_3010.bloodbath.combatmechanics.DirectActions;
 
 import android.widget.TextView;
 
@@ -11,16 +10,13 @@ import java.util.Random;
 
 
 public class TestSortControl {
-    DirectActions directActions = new DirectActions();
-    PreparedActions preparedActions = new PreparedActions();
-    PassiveActions passiveActions = new PassiveActions();
-    CombinedActions combinedActions = new CombinedActions();
+    private DirectActions directActions = new DirectActions();
+    private PreparedActions preparedActions = new PreparedActions();
+    private PassiveActions passiveActions = new PassiveActions();
+    private CombinedActions combinedActions = new CombinedActions();
 
 
-    public TestSortControl() {
-    }
-
-    private boolean testingStyle(Character character, String styleWanted) { // used to verify if a given character uses a given style
+    public boolean testingStyle(Character character, String styleWanted) { // used to verify if a given character uses a given style
         boolean positiveTesting = false;
         if (character.getStyle1().equals(styleWanted) || character.getStyle2().equals(styleWanted) || character.getStyle3().equals(styleWanted) || character.getStyle4().equals(styleWanted) || character.getStyle5().equals(styleWanted)) {
             positiveTesting = true;
@@ -61,16 +57,15 @@ public class TestSortControl {
             }
             tvArena.append(actionsAndAdvantage[6] + " starts this fight with the advantage !\n\n");
         } else if (variables[0] > 0) {
-            if (actionsAndAdvantage[6].equals(player.getName())) {
-                if (variables[1] > 0 && variables[2] == 0) {
-                    actionsAndAdvantage[6] = opponent.getName();
-                    tvArena.append(player.getName() + " looses the advantage !\n\n");
-                }
-            } else if (actionsAndAdvantage[6].equals(opponent.getName())) {
-                if (variables[2] > 0 && variables[1] == 0) {
-                    actionsAndAdvantage[6] = player.getName();
-                    tvArena.append(opponent.getName() + " looses the advantage !\n\n");
-                }
+            if (actionsAndAdvantage[6].equals(player.getName()) && variables[1] > 0 && variables[2] == 0) {
+
+                actionsAndAdvantage[6] = opponent.getName();
+                tvArena.append(player.getName() + " looses the advantage !\n\n");
+
+            } else if (actionsAndAdvantage[6].equals(opponent.getName()) && variables[2] > 0 && variables[1] == 0) {
+                actionsAndAdvantage[6] = player.getName();
+                tvArena.append(opponent.getName() + " looses the advantage !\n\n");
+
             }
         }
 
@@ -88,22 +83,22 @@ public class TestSortControl {
 
     public int actionsMenuSorter(String actionToSort) { // used to sort dynamic menu items at the proper index
         int sortedIndex = 4;
-        if (actionToSort.equals("Rush") || actionToSort.equals("Frenetic bashing")) {
+        if ("Rush".equals(actionToSort) || "Frenetic bashing".equals(actionToSort)) {
             sortedIndex = 0;
         }
-        if (actionToSort.equals("Loudness") || actionToSort.equals("Fetish") || actionToSort.equals("Vandalism") || actionToSort.equals("Warming up")) {
+        if ("Loudness".equals(actionToSort) || "Fetish".equals(actionToSort) || "Vandalism".equals(actionToSort) || "Warming up".equals(actionToSort)) {
             sortedIndex = 1;
         }
-        if (actionToSort.equals("Barbaric fire") || actionToSort.equals("Battle rage")) {
+        if ("Barbaric fire".equals(actionToSort) || "Battle rage".equals(actionToSort)) {
             sortedIndex = 2;
         }
-        if (actionToSort.equals("Inquisition") || actionToSort.equals("Ancient rites")) {
+        if ("Inquisition".equals(actionToSort) || "Ancient rites".equals(actionToSort)) {
             sortedIndex = 3;
         }
         return sortedIndex;
     }
 
-    public void actionManager(Character player, Character opponent, String actionChosen, Random dice, int[] variables, String[] actionsStored, TextView tvArena) {
+    public void actionManager(Character player, Character opponent, String actionChosen, Random dice, int[] variables, String[] actionsStored, TextView tvArena) { // used to apply player's choice to combat
 
         switch (actionChosen) {
             case "Rush":
@@ -139,7 +134,7 @@ public class TestSortControl {
         }
     }
 
-    private void actionStorer(String action, String[] actionsStored, Character player, TextView
+    private void actionStorer(String action, String[] actionsStored, Character player, TextView // used for preparing actions
             tvArena) {
         String statement = "You prepare something nasty\n";
         if (actionsStored[0].equals("")) {
@@ -157,33 +152,33 @@ public class TestSortControl {
         tvArena.append(statement);
     }
 
-    public void reactionsApplier(Character player, Character opponent, LinkedList<String> reactionsToApply, int[] combatVariables, Random dice, TextView tvArena, String[] prepartedActions) {
+    public void reactionsApplier(Character player, Character opponent, LinkedList<String> reactionsToApply, int[] combatVariables, Random dice, TextView tvArena, String[] prepartedActions) { // used to trigger appropriate combat reactions
 
 
         for (String action : reactionsToApply) {
 
 
-            if (action.equals("Loudness") && testingPassiveReaction(player, "Loudness") && testingStyle(opponent, "Magic")) {
+            if ("Loudness".equals(action) && testingPassiveReaction(player, "Loudness") && testingStyle(opponent, "Magic")) {
                 passiveActions.passivePowerOne(player, opponent, combatVariables, dice, tvArena);
 
             }
-            if (action.equals("Fetish") && testingPassiveReaction(player, "Fetish") && testingStyle(opponent, "Magic")) {
+            if ("Fetish".equals(action) && testingPassiveReaction(player, "Fetish") && testingStyle(opponent, "Magic")) {
                 passiveActions.passivePowerTwo(player, opponent, combatVariables, dice, tvArena);
 
             }
-            if (action.equals("Vandalism") && testingPassiveReaction(player, "Vandalism") && testingStyle(opponent, "Science")) {
+            if ("Vandalism".equals(action) && testingPassiveReaction(player, "Vandalism") && testingStyle(opponent, "Science")) {
                 passiveActions.passivePowerThree(player, opponent, combatVariables, dice, tvArena);
 
             }
-            if (action.equals("Warming up") && testingPassiveReaction(player, "Warming up") && testingStyle(opponent, "Science")) {
+            if ("Warming up".equals(action) && testingPassiveReaction(player, "Warming up") && testingStyle(opponent, "Science")) {
                 passiveActions.passivePowerFour(player, opponent, combatVariables, dice, tvArena);
 
             }
-            if (action.equals("Barbaric fire") && testingActionAlreadyPrepared(player, "Barbaric fire", prepartedActions)) {
+            if ("Barbaric fire".equals(action) && testingActionAlreadyPrepared(player, "Barbaric fire", prepartedActions)) {
                 preparedActions.preparedPowerOne(player, opponent, combatVariables, dice, tvArena);
 
             }
-            if (action.equals("Battle rage") && testingActionAlreadyPrepared(player, "Barbaric fire", prepartedActions)&&testingWounds(player, player, combatVariables)) {
+            if ("Battle rage".equals(action) && testingActionAlreadyPrepared(player, "Barbaric fire", prepartedActions) && testingWounds(player, player, combatVariables)) {
                 preparedActions.preparedPowerTwo(player, opponent, combatVariables, dice, tvArena);
 
             }
@@ -192,7 +187,7 @@ public class TestSortControl {
         }
     }
 
-    public LinkedList<String> actionInventoryChecker(Character player, String[] actionsStored) {
+    public LinkedList<String> actionInventoryChecker(Character player, String[] actionsStored) { // used to retrieve every reaction to test for triggering
         LinkedList<String> reactions = new LinkedList<>();
 
         reactions.add(player.getActionOne());
@@ -220,7 +215,7 @@ public class TestSortControl {
         return reactions;
     }
 
-    public boolean testingPassiveReaction(Character player, String actionWanted) {
+    public boolean testingPassiveReaction(Character player, String actionWanted) { // testing if a given character has the given action slotted
         boolean positiveTesting = false;
         if (player.getActionOne().equals(actionWanted) || player.getActionTwo().equals(actionWanted) || player.getActionThree().equals(actionWanted) || player.getActionFour().equals(actionWanted) || player.getActionFive().equals(actionWanted) || player.getActionSix().equals(actionWanted) || player.getActionSeven().equals(actionWanted) || player.getActionEight().equals(actionWanted) || player.getActionNine().equals(actionWanted) || player.getActionTen().equals(actionWanted)) {
             positiveTesting = true;
@@ -228,20 +223,15 @@ public class TestSortControl {
         return positiveTesting;
     }
 
-    public boolean testingActionAlreadyPrepared(Character player, String action, String[] actionsStored) {
+    public boolean testingActionAlreadyPrepared(Character player, String action, String[] actionsStored) { // testing if the action has been prepared and slotted already
         boolean positiveTesting = false;
         for (int i = 0; i <= 5; i += 5) {
-            if (actionsStored[i].equals(player.getName())) {
-                if (actionsStored[i + 1].equals(action)) {
-                    positiveTesting = true;
-                }
+            if (actionsStored[i].equals(player.getName()) && actionsStored[i + 1].equals(action)) {
+                positiveTesting = true;
             }
-
-
-        }return positiveTesting;
+        }
+        return positiveTesting;
     }
-
-
 }
 
 
