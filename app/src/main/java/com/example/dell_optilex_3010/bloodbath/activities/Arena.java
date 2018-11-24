@@ -2,6 +2,7 @@ package com.example.dell_optilex_3010.bloodbath.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.method.ScrollingMovementMethod;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,12 +21,10 @@ import java.util.Random;
 public class Arena extends AppCompatActivity {
     Random dice = new Random(1 - 20);
     OpponentActions opponentActions = new OpponentActions();
-    private int[] combatVariables = {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};  // round counter/player wounds/defender wounds/temporary attacker bonus (dext)/temporary attacker bonus (stmn)/temporary attacker bonus (intl)/temporary attacker bonus (knwl)/temporary defender bonus (dext)/temporary defender bonus (stmn)/temporary defender bonus (intl)/temporary defender bonus (knwl)/round started/player played/opponent played
-    private String[] preparedActionsAndAdvantage = {"", "", "", "", "", "", "", ""};   // first slot owner/first slot action stocked / second slot owner / second slot action stored / third slot owner / third slot action stored/Advantaged player/Winner of the fight
+    private int[] combatVariables = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};  // round counter/player wounds/defender wounds/temporary attacker bonus (dext)/temporary attacker bonus (stmn)/temporary attacker bonus (intl)/temporary attacker bonus (knwl)/temporary defender bonus (dext)/temporary defender bonus (stmn)/temporary defender bonus (intl)/temporary defender bonus (knwl)/round process counter
+    private String[] preparedActionsAndAdvantage = {"", "", "", "", "", "", ""};   // first slot owner/first slot action stocked / second slot owner / second slot action stored / third slot owner / third slot action stored/Advantaged player
     private Character player;
     private Character opponent;
-    boolean playerTurnDone;
-    boolean opponentTurnDone;
     TestSortControl test;
     TextView tvArena;
     Button startButton;
@@ -42,9 +41,10 @@ public class Arena extends AppCompatActivity {
         opponent.loadCharacter(2);
         test = new TestSortControl();
         tvArena = findViewById(R.id.tvArena);
-        startButton = findViewById(R.id.btFirstRound);
+        startButton = findViewById(R.id.btStartRound);
         actionButton = findViewById(R.id.btAction);
         opponentTurn = findViewById(R.id.btBringIt);
+        tvArena.setMovementMethod(new ScrollingMovementMethod());
         actionButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -67,8 +67,16 @@ public class Arena extends AppCompatActivity {
 
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
-                        // test.actionManager(player, opponent, item.getTitle().toString(), dice, combatVariables, preparedActionsAndAdvantage, tvArena);
-                        Toast.makeText(Arena.this, "You Clicked : " + item.getTitle(), Toast.LENGTH_SHORT).show();
+                        test.actionManager(player, opponent, item.getTitle().toString(), dice, combatVariables, preparedActionsAndAdvantage, tvArena);
+
+                        actionButton.setVisibility(View.INVISIBLE);
+                        if (combatVariables[11] ==0) {
+                            opponentTurn.setVisibility(View.VISIBLE);
+                        } else {
+                            startButton.setVisibility(View.VISIBLE);
+                        }combatVariables[11]++;
+                        test.reactionsApplier(player, opponent, test.actionInventoryChecker(player, preparedActionsAndAdvantage), combatVariables, dice, tvArena, preparedActionsAndAdvantage); // testing for opponent reactions
+
                         return true;
 
                     }
@@ -87,54 +95,30 @@ public class Arena extends AppCompatActivity {
     }
 
     public void startRound(View view) {
-        tvArena.append("Round " + (String.valueOf(combatVariables[0])) + "\n");
+        combatVariables[0]++;
+        combatVariables[11] = 0; // beginning of a new round
+        tvArena.append("\nRound " + (String.valueOf(combatVariables[0])) + "\n\n");
         startButton.setVisibility(View.INVISIBLE);
-        startButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if((combatVariables[9]!=combatVariables[0])){
-
-                }
-            }
-        });
-
-
-        while (preparedActionsAndAdvantage[7].equals("")) { // as long as nobody won
-
-            test.determiningAdvantage(player, opponent, combatVariables, dice, preparedActionsAndAdvantage, tvArena); // determines who has the advantage
-            if (preparedActionsAndAdvantage[6].equals(player.getName())) { // if the player has the advantage he plays first
-                actionButton.setVisibility(View.VISIBLE); // player turn
-                while (!playerTurnDone) {
-                }
-                test.reactionsApplier(player, opponent, test.actionInventoryChecker(player, preparedActionsAndAdvantage), combatVariables, dice, tvArena, preparedActionsAndAdvantage); // testing for opponent reactions
-                opponentTurn.setVisibility(View.VISIBLE);// opponent turn
-                while (!opponentTurnDone) {
-
-                }
-                test.reactionsApplier(opponent, player, test.actionInventoryChecker(player, preparedActionsAndAdvantage), combatVariables, dice, tvArena, preparedActionsAndAdvantage);// testing for player reactions
-            } else { // if the opponent has the advantage he plays first
-                opponentTurn.setVisibility(View.VISIBLE);// opponent turn
-                while (!opponentTurnDone) {
-
-                }
-                test.reactionsApplier(opponent, player, test.actionInventoryChecker(player, preparedActionsAndAdvantage), combatVariables, dice, tvArena, preparedActionsAndAdvantage);// testing for player reactions
-                actionButton.setVisibility(View.VISIBLE);// player turn
-                while (!playerTurnDone) {
-                }
-                test.reactionsApplier(player, opponent, test.actionInventoryChecker(player, preparedActionsAndAdvantage), combatVariables, dice, tvArena, preparedActionsAndAdvantage);// testing for opponent reactions
-
-            }
-            test.testingVictory(player, opponent, combatVariables, preparedActionsAndAdvantage); // checking for victory
-            combatVariables[0]++; // next round
-            startButton.setVisibility(View.VISIBLE);
+        test.determiningAdvantage(player, opponent, combatVariables, dice, preparedActionsAndAdvantage, tvArena); // determines who has the advantage
+        if (preparedActionsAndAdvantage[6].equals(player.getName())) {
+            actionButton.setVisibility(View.VISIBLE);
+        } else {
+            opponentTurn.setVisibility(View.VISIBLE);
         }
+
     }
 
     public void opponentTurn(View view) {
+
         opponentActions.jeanMiFrappe(player, opponent, dice, combatVariables, tvArena);
+        test.reactionsApplier(opponent, player, test.actionInventoryChecker(opponent, preparedActionsAndAdvantage), combatVariables, dice, tvArena, preparedActionsAndAdvantage);// testing for player reactions
         opponentTurn.setVisibility(View.INVISIBLE);
-
-
+        if (combatVariables[11] ==0) {
+            actionButton.setVisibility(View.VISIBLE);
+        } else {
+            startButton.setVisibility(View.VISIBLE);
+        }   combatVariables[11]++;
     }
-
 }
+
+

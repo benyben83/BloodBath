@@ -33,9 +33,9 @@ public class Databases extends SQLiteOpenHelper {
                 ")";
         db.execSQL(sql);
         db.execSQL("INSERT INTO saves (id,name,dexterity,stamina,intelligence,knowledge,style_one,style_two, style_three, style_four, style_five, race, health, level, action_one, action_two, action_three, action_four, action_five, action_six, action_seven, action_eight, action_nine, " +
-                "action_ten ) values ('1','momo','10','10','10','10','Power','', '', '', '', '', '3', '6', 'Inquisition', 'Ancient rites', 'Barbaric fire', 'Battle rage', 'Loudness', 'Fetish', 'Vandalism', 'Warming up', 'Rush', 'Frenetic bashing')");
+                "action_ten ) values ('1','momo','20','20','20','20','Power','', '', '', '', '', '3', '6', 'Inquisition', 'Ancient rites', 'Barbaric fire', 'Battle rage', 'Loudness', 'Fetish', 'Vandalism', 'Warming up', 'Rush', 'Frenetic bashing')");
         db.execSQL("INSERT INTO saves (id,name,dexterity,stamina,intelligence,knowledge,style_one,style_two, style_three, style_four, style_five, race, health, level, action_one, action_two, action_three, action_four, action_five, action_six, action_seven, action_eight, action_nine, " +
-                "action_ten ) values ('2','Jean Louis','0','0','0','0','rien','rien', 'rien', 'rien', 'rien', 'human', '3', '6', '', ' ', ' ', ' ', '', '', '', ' ', '', ' ')");
+                "action_ten ) values ('2','Jean Louis','0','0','0','0','Magic','', 'rien', 'rien', 'rien', 'human', '3', '6', '', ' ', ' ', ' ', '', '', '', ' ', '', ' ')");
 
     }
 

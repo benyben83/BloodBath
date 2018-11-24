@@ -6,9 +6,7 @@ import android.widget.TextView;
 
 import com.example.dell_optilex_3010.bloodbath.charactercreation.Character;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Random;
 
 
@@ -22,7 +20,7 @@ public class TestSortControl {
     public TestSortControl() {
     }
 
-    public boolean testingStyle(Character character, String styleWanted) { // used to verify if a given character uses a given style
+    private boolean testingStyle(Character character, String styleWanted) { // used to verify if a given character uses a given style
         boolean positiveTesting = false;
         if (character.getStyle1().equals(styleWanted) || character.getStyle2().equals(styleWanted) || character.getStyle3().equals(styleWanted) || character.getStyle4().equals(styleWanted) || character.getStyle5().equals(styleWanted)) {
             positiveTesting = true;
@@ -35,7 +33,7 @@ public class TestSortControl {
         if (character.getName().equals(playerModel.getName()) && variables[1] > 0) {
             positiveTesting = true;
         }
-        if (!character.getName().equals(playerModel.getName()) && variables[2] > 0) {
+        if ((!character.getName().equals(playerModel.getName())) && variables[2] > 0) {
             positiveTesting = true;
         }
         return positiveTesting;
@@ -58,20 +56,20 @@ public class TestSortControl {
     public void determiningAdvantage(Character player, Character opponent, int[] variables, Random dice, String[] actionsAndAdvantage, TextView tvArena) { // used to determine what character has the advantage during combat
         if (variables[0] == 1) {
             actionsAndAdvantage[6] = opponent.getName();
-            if ((player.getDexterity() + player.getIntelligence() + dice.nextInt()) >= (opponent.getIntelligence() + opponent.getDexterity() + dice.nextInt())) {
+            if ((player.getDexterity() + player.getIntelligence() + dice.nextInt() + variables[3] + variables[5]) >= (opponent.getIntelligence() + opponent.getDexterity() + dice.nextInt() + variables[7] + variables[9])) {
                 actionsAndAdvantage[6] = player.getName();
             }
-            tvArena.setText(player.getName() + " Starts this fight with the advantage !\n");
+            tvArena.append(actionsAndAdvantage[6] + " starts this fight with the advantage !\n\n");
         } else if (variables[0] > 0) {
             if (actionsAndAdvantage[6].equals(player.getName())) {
                 if (variables[1] > 0 && variables[2] == 0) {
                     actionsAndAdvantage[6] = opponent.getName();
-                    tvArena.append(player.getName() + " looses the advantage !");
+                    tvArena.append(player.getName() + " looses the advantage !\n\n");
                 }
             } else if (actionsAndAdvantage[6].equals(opponent.getName())) {
                 if (variables[2] > 0 && variables[1] == 0) {
                     actionsAndAdvantage[6] = player.getName();
-                    tvArena.append(opponent.getName() + " looses the advantage !");
+                    tvArena.append(opponent.getName() + " looses the advantage !\n\n");
                 }
             }
         }
@@ -159,37 +157,37 @@ public class TestSortControl {
         tvArena.append(statement);
     }
 
-    public void reactionsApplier(Character player, Character opponent, LinkedList<String> reactionsToApply, int[] combatVariables, Random dice, TextView tvArena, String[]prepartedActions) {
+    public void reactionsApplier(Character player, Character opponent, LinkedList<String> reactionsToApply, int[] combatVariables, Random dice, TextView tvArena, String[] prepartedActions) {
 
 
         for (String action : reactionsToApply) {
 
 
-            if (action.equals("Loudness")) {
+            if (action.equals("Loudness") && testingPassiveReaction(player, "Loudness") && testingStyle(opponent, "Magic")) {
                 passiveActions.passivePowerOne(player, opponent, combatVariables, dice, tvArena);
 
             }
-            if (action.equals("Fetish")) {
+            if (action.equals("Fetish") && testingPassiveReaction(player, "Fetish") && testingStyle(opponent, "Magic")) {
                 passiveActions.passivePowerTwo(player, opponent, combatVariables, dice, tvArena);
 
             }
-            if (action.equals("Vandalism")) {
+            if (action.equals("Vandalism") && testingPassiveReaction(player, "Vandalism") && testingStyle(opponent, "Science")) {
                 passiveActions.passivePowerThree(player, opponent, combatVariables, dice, tvArena);
 
             }
-            if (action.equals("Warming up")) {
+            if (action.equals("Warming up") && testingPassiveReaction(player, "Warming up") && testingStyle(opponent, "Science")) {
                 passiveActions.passivePowerFour(player, opponent, combatVariables, dice, tvArena);
 
             }
-            if (action.equals("Barbaric fire")) {
+            if (action.equals("Barbaric fire") && testingActionAlreadyPrepared(player, "Barbaric fire", prepartedActions)) {
                 preparedActions.preparedPowerOne(player, opponent, combatVariables, dice, tvArena);
 
             }
-            if (action.equals("Battle rage")) {
+            if (action.equals("Battle rage") && testingActionAlreadyPrepared(player, "Barbaric fire", prepartedActions)&&testingWounds(player, player, combatVariables)) {
                 preparedActions.preparedPowerTwo(player, opponent, combatVariables, dice, tvArena);
 
             }
-            
+
 
         }
     }
@@ -221,9 +219,29 @@ public class TestSortControl {
         }
         return reactions;
     }
+
+    public boolean testingPassiveReaction(Character player, String actionWanted) {
+        boolean positiveTesting = false;
+        if (player.getActionOne().equals(actionWanted) || player.getActionTwo().equals(actionWanted) || player.getActionThree().equals(actionWanted) || player.getActionFour().equals(actionWanted) || player.getActionFive().equals(actionWanted) || player.getActionSix().equals(actionWanted) || player.getActionSeven().equals(actionWanted) || player.getActionEight().equals(actionWanted) || player.getActionNine().equals(actionWanted) || player.getActionTen().equals(actionWanted)) {
+            positiveTesting = true;
+        }
+        return positiveTesting;
+    }
+
+    public boolean testingActionAlreadyPrepared(Character player, String action, String[] actionsStored) {
+        boolean positiveTesting = false;
+        for (int i = 0; i <= 5; i += 5) {
+            if (actionsStored[i].equals(player.getName())) {
+                if (actionsStored[i + 1].equals(action)) {
+                    positiveTesting = true;
+                }
+            }
+
+
+        }return positiveTesting;
+    }
+
+
 }
-
-
-
 
 
