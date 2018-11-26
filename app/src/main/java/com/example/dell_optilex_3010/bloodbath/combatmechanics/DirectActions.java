@@ -27,4 +27,7 @@ public class DirectActions {
                 tvArena.append(player.getName() + " frenetically swings her weapon in the wrong direction, how dumb...\n");
             }
     }
+    public void technicsDirectOne (Character player, Character opponent, int[]variables, Random dice, TextView tvArena){
+
+    }
 }

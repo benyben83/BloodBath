@@ -67,8 +67,8 @@ public class Arena extends AppCompatActivity {
                     @Override
                     public boolean onMenuItemClick(MenuItem item) { // player's turn
                         test.actionManager(player, opponent, item.getTitle().toString(), dice, combatVariables, preparedActionsAndAdvantage, tvArena); // apply player's choice
-                        actionButton.setVisibility(View.INVISIBLE); // player button disappears
-                        if (combatVariables[11] ==0) { // if the opponent hasn't played yet
+                        actionButton.setVisibility(View.GONE); // player button disappears
+                        if (combatVariables[11] == 0) { // if the opponent hasn't played yet
 
 
                             // here will be victory tester
@@ -77,7 +77,8 @@ public class Arena extends AppCompatActivity {
                             opponentTurn.setVisibility(View.VISIBLE); // opponent's turn
                         } else { // if the opponent has played already
                             startButton.setVisibility(View.VISIBLE); // new round
-                        }combatVariables[11]++;
+                        }
+                        combatVariables[11]++;
                         test.reactionsApplier(player, opponent, test.actionInventoryChecker(player, preparedActionsAndAdvantage), combatVariables, dice, tvArena, preparedActionsAndAdvantage); // testing for opponent reactions
 
                         return true;
@@ -101,7 +102,7 @@ public class Arena extends AppCompatActivity {
         combatVariables[0]++;// new round
         combatVariables[11] = 0; // beginning of a new round
         tvArena.append("\nRound " + (String.valueOf(combatVariables[0])) + "\n\n");
-        startButton.setVisibility(View.INVISIBLE);
+        startButton.setVisibility(View.GONE);
         test.determiningAdvantage(player, opponent, combatVariables, dice, preparedActionsAndAdvantage, tvArena); // determines who has the advantage
         if (preparedActionsAndAdvantage[6].equals(player.getName())) { // if the player has the advantage he plays first
             actionButton.setVisibility(View.VISIBLE);
@@ -115,12 +116,13 @@ public class Arena extends AppCompatActivity {
 
         opponentActions.jeanMiFrappe(player, opponent, dice, combatVariables, tvArena); // opponent plays his turn
         test.reactionsApplier(opponent, player, test.actionInventoryChecker(opponent, preparedActionsAndAdvantage), combatVariables, dice, tvArena, preparedActionsAndAdvantage);// testing for player reactions
-        opponentTurn.setVisibility(View.INVISIBLE);
-        if (combatVariables[11] ==0) { //if player hasn't played yet it's his turn
+        opponentTurn.setVisibility(View.GONE);
+        if (combatVariables[11] == 0) { //if player hasn't played yet it's his turn
             actionButton.setVisibility(View.VISIBLE);
         } else { // else new round
             startButton.setVisibility(View.VISIBLE);
-        }   combatVariables[11]++;
+        }
+        combatVariables[11]++;
     }
 }
 

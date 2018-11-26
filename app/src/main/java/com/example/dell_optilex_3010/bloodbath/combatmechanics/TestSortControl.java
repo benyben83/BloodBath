@@ -193,7 +193,7 @@ public class TestSortControl {
         reactions.add(player.getActionOne());
         reactions.add(player.getActionTwo());
         reactions.add(player.getActionThree());
-        reactions.add(player.getActionFour());
+        reactions.add(player.getActionFour()); b
         reactions.add(player.getActionFive());
         reactions.add(player.getActionSix());
         reactions.add(player.getActionSeven());
@@ -223,7 +223,7 @@ public class TestSortControl {
         return positiveTesting;
     }
 
-    public boolean testingActionAlreadyPrepared(Character player, String action, String[] actionsStored) { // testing if the action has been prepared and slotted already
+    public boolean testingActionAlreadyPrepared(Character player, String action, String[] actionsStored) { // testing if the action has been prepared and slotted    already
         boolean positiveTesting = false;
         for (int i = 0; i <= 5; i += 5) {
             if (actionsStored[i].equals(player.getName()) && actionsStored[i + 1].equals(action)) {
