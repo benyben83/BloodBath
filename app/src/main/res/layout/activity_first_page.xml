@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/llfirstpage"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
-    android:orientation="vertical" >
+    android:background="@drawable/animated_background"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,60 +17,163 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="0dp"
             android:fontFamily="@font/arcade_classic"
             android:text="BLOODBATH"
             android:textAlignment="center"
-            android:textColor="#df0ea7"
-            android:textSize="60dp"
+            android:textColor="#dfa00e"
+            android:textSize="40dp"
             android:textStyle="bold" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="130dp"
+        android:layout_marginTop="10dp"
         android:gravity="center"
         android:orientation="vertical">
 
 
         <Button
-            android:id="@+id/btNewgame"
+            android:id="@+id/btPlay"
             android:layout_width="150dp"
-            android:layout_height="5dp"
+            android:layout_height="40dp"
             android:layout_margin="10dp"
             android:layout_weight="1"
             android:background="@drawable/ben_oldschool_menu"
             android:fontFamily="@font/arcade_classic"
-            android:onClick="startNewGame"
-            android:text="New Game"
-            android:textColor="#ffffff" />
-
-        <Button
-            android:id="@+id/btLoadExistingGame"
-            android:layout_width="150dp"
-            android:layout_height="5dp"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:background="@drawable/ben_oldschool_menu"
-            android:fontFamily="@font/arcade_classic"
-            android:onClick="startNewGame"
-            android:text="Continue"
-            android:textColor="#ffffff" />
+            android:onClick="play"
+            android:text="Play"
+            android:textColor="#dfa00e"
+            android:visibility="visible" />
 
         <Button
             android:id="@+id/btQuit"
             android:layout_width="150dp"
-            android:layout_height="5dp"
+            android:layout_height="40dp"
             android:layout_margin="10dp"
             android:layout_weight="1"
             android:background="@drawable/ben_oldschool_menu"
             android:fontFamily="@font/arcade_classic"
             android:onClick="leaveApp"
             android:text="Quit"
-            android:textColor="#ffffff" />
+            android:textColor="#dfa00e"
+            android:visibility="visible" />
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btFirstSave"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/ben_oldschool_menu"
+                android:fontFamily="@font/arcade_classic"
+                android:onClick="loadGameOne"
+                android:text="New game"
+                android:textColor="#dfa00e"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/btNewFirstSave"
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/ben_oldschool_menu"
+                android:fontFamily="@font/arcade_classic"
+                android:onClick="newGameOne"
+                android:text="New game (Erase)"
+
+                android:textColor="#dfa00e"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btSecondSave"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/ben_oldschool_menu"
+                android:fontFamily="@font/arcade_classic"
+                android:onClick="loadGameTwo"
+                android:text="New game"
+                android:textColor="#dfa00e"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/btNewSecondSave"
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/ben_oldschool_menu"
+                android:fontFamily="@font/arcade_classic"
+                android:onClick="newGameTwo"
+                android:text="New game (Erase)"
+                android:textColor="#dfa00e"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btThirdSave"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/ben_oldschool_menu"
+                android:fontFamily="@font/arcade_classic"
+                android:onClick="loadGameThree"
+                android:text="Quit"
+                android:textColor="#dfa00e"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/btNewThirdSave"
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/ben_oldschool_menu"
+                android:fontFamily="@font/arcade_classic"
+                android:onClick="newGameThree"
+                android:text="New game (Erase)"
+                android:textColor="#dfa00e"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btReturn"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/ben_oldschool_menu"
+            android:fontFamily="@font/arcade_classic"
+            android:onClick="returnToPrevious"
+            android:text="Return"
+            android:textColor="#dfa00e"
+            android:visibility="gone" />
 
 
     </LinearLayout>

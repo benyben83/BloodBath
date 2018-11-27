@@ -1,0 +1,672 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/llCreation"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/animated_background"
+    android:orientation="horizontal"
+    tools:context=".activities.NewCharacter">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/etName"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/arcade_classic"
+                android:onClick="clearName"
+                android:text="Name ="
+                android:textColor="#dfa00e"
+                android:textSize="24dp" />
+
+            <TextView
+                android:id="@+id/tvRace"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/arcade_classic"
+                android:text="Race="
+                android:textColor="#dfa00e"
+                android:textSize="24dp" />
+
+            <TextView
+                android:id="@+id/tvStyle"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/arcade_classic"
+                android:text="Style ="
+                android:textColor="#dfa00e"
+                android:textSize="24dp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btFirstPrevious"
+                android:layout_width="150dp"
+                android:layout_height="35dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/ben_oldschool_menu"
+                android:fontFamily="@font/arcade_classic"
+                android:text="Return"
+                android:textColor="#dfa00e"
+                android:visibility="visible" />
+
+            <Button
+                android:id="@+id/btSecondPrevious"
+                android:layout_width="150dp"
+                android:layout_height="35dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/ben_oldschool_menu"
+                android:fontFamily="@font/arcade_classic"
+                android:text="Return"
+                android:textColor="#dfa00e"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/btThirdPrevious"
+                android:layout_width="150dp"
+                android:layout_height="35dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/ben_oldschool_menu"
+                android:fontFamily="@font/arcade_classic"
+                android:text="Return"
+                android:textColor="#dfa00e"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+
+                    android:layout_width="120dp"
+                    android:layout_height="35dp"
+                    android:layout_marginBottom="5dp"
+                    android:fontFamily="@font/arcade_classic"
+                    android:text="Dexterity ="
+                    android:textColor="#dfa00e  "
+                    android:textSize="24dp" />
+
+                <TextView
+                    android:id="@+id/tvDexterity"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_gravity="right"
+                    android:layout_marginBottom="5dp"
+                    android:fontFamily="@font/arcade_classic"
+                    android:text="0"
+                    android:textColor="#dfa00e  "
+                    android:textSize="24dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+
+                    android:layout_width="120dp"
+                    android:layout_height="35dp"
+                    android:layout_marginBottom="5dp"
+
+                    android:fontFamily="@font/arcade_classic"
+                    android:text="Stamina ="
+                    android:textColor="#dfa00e"
+                    android:textSize="24dp" />
+
+                <TextView
+                    android:id="@+id/tvStamina"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_gravity="right"
+                    android:layout_marginBottom="5dp"
+                    android:fontFamily="@font/arcade_classic"
+                    android:text="0"
+                    android:textColor="#dfa00e  "
+                    android:textSize="24dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+
+                    android:layout_width="120dp"
+                    android:layout_height="35dp"
+                    android:layout_marginBottom="5dp"
+                    android:fontFamily="@font/arcade_classic"
+                    android:text="Intell. ="
+                    android:textColor="#dfa00e"
+                    android:textSize="24dp" />
+
+                <TextView
+                    android:id="@+id/tvIntelligence"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_gravity="right"
+                    android:layout_marginBottom="5dp"
+                    android:fontFamily="@font/arcade_classic"
+                    android:text="0"
+                    android:textColor="#dfa00e  "
+                    android:textSize="24dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+
+                    android:layout_width="120dp"
+                    android:layout_height="35dp"
+                    android:layout_marginBottom="5dp"
+
+                    android:fontFamily="@font/arcade_classic"
+                    android:text="Knowled.="
+                    android:textColor="#dfa00e"
+                    android:textSize="24dp" />
+
+                <TextView
+                    android:id="@+id/tvKnowledge"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_gravity="right"
+                    android:layout_marginBottom="5dp"
+                    android:fontFamily="@font/arcade_classic"
+                    android:text="0"
+                    android:textColor="#dfa00e  "
+                    android:textSize="24dp" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btFirstNext"
+                android:layout_width="150dp"
+                android:layout_height="35dp"
+                android:background="@drawable/ben_oldschool_menu"
+                android:fontFamily="@font/arcade_classic"
+                android:onClick="firstNext"
+                android:text="Next"
+                android:textColor="#dfa00e"
+                android:visibility="visible" />
+
+            <Button
+                android:id="@+id/btSecondNext"
+                android:layout_width="150dp"
+                android:layout_height="35dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/ben_oldschool_menu"
+                android:fontFamily="@font/arcade_classic"
+                android:onClick="secondNext"
+                android:text="Next"
+                android:textColor="#dfa00e"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/btThirdNext"
+                android:layout_width="150dp"
+                android:layout_height="35dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/ben_oldschool_menu"
+                android:fontFamily="@font/arcade_classic"
+                android:text="Next"
+                android:onClick="thirdNext"
+                android:textColor="#dfa00e"
+                android:visibility="gone" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/llCreationOne"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/arcade_classic"
+            android:text="First you need to distribute 5 points among your stats"
+            android:textAlignment="center"
+            android:textColor="#dfa00e" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/arcade_classic"
+            android:text="Remaining points"
+            android:textColor="#dfa00e" />
+
+        <TextView
+            android:id="@+id/tvRemainingPoints"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/arcade_classic"
+            android:text="5"
+            android:textColor="#dfa00e" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/arcade_classic"
+                    android:text="Dexterity"
+                    android:textColor="#dfa00e" />
+
+                <Button
+                    android:id="@+id/btIncreaseDexterity"
+                    android:layout_width="30dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/ben_oldschool_menu"
+                    android:fontFamily="@font/arcade_classic"
+                    android:onClick="increaseStat"
+                    android:text="+"
+                    android:textColor="#dfa00e" />
+
+                <Button
+                    android:id="@+id/btDecreaseDexterity"
+                    android:layout_width="30dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/ben_oldschool_menu"
+                    android:fontFamily="@font/arcade_classic"
+                    android:onClick="decreaseStat"
+                    android:text="-"
+                    android:textColor="#dfa00e" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/arcade_classic"
+                    android:text="Intelligence"
+                    android:textColor="#dfa00e" />
+
+                <Button
+                    android:id="@+id/btIncreaseIntelligence"
+                    android:layout_width="30dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/ben_oldschool_menu"
+                    android:fontFamily="@font/arcade_classic"
+                    android:onClick="increaseStat"
+                    android:text="+"
+                    android:textColor="#dfa00e" />
+
+                <Button
+                    android:id="@+id/btDecreaseIntelligence"
+                    android:layout_width="30dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/ben_oldschool_menu"
+                    android:fontFamily="@font/arcade_classic"
+                    android:onClick="decreaseStat"
+                    android:text="-"
+                    android:textColor="#dfa00e" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/arcade_classic"
+                    android:text="Stamina"
+                    android:textColor="#dfa00e" />
+
+                <Button
+                    android:id="@+id/btIncreaseStamina"
+                    android:layout_width="30dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/ben_oldschool_menu"
+                    android:fontFamily="@font/arcade_classic"
+                    android:onClick="increaseStat"
+                    android:text="+"
+                    android:textColor="#dfa00e" />
+
+                <Button
+                    android:id="@+id/btDecreaseStamina"
+                    android:layout_width="30dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/ben_oldschool_menu"
+                    android:fontFamily="@font/arcade_classic"
+                    android:onClick="decreaseStat"
+                    android:text="-"
+                    android:textColor="#dfa00e" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/arcade_classic"
+                    android:text="Knowledge"
+                    android:textColor="#dfa00e" />
+
+                <Button
+                    android:id="@+id/btIncreaseKnowledge"
+                    android:layout_width="30dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/ben_oldschool_menu"
+                    android:fontFamily="@font/arcade_classic"
+                    android:onClick="increaseStat"
+                    android:text="+"
+                    android:textColor="#dfa00e" />
+
+                <Button
+                    android:id="@+id/btDecreaseKnowledge"
+                    android:layout_width="30dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/ben_oldschool_menu"
+                    android:fontFamily="@font/arcade_classic"
+                    android:onClick="decreaseStat"
+                    android:text="-"
+                    android:textColor="#dfa00e" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/svCreationTwo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical"
+        android:visibility="gone">
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:fontFamily="@font/arcade_classic"
+                android:text="Now you have to choose your"
+                android:textAlignment="center"
+                android:textColor="#dfa00e" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:fontFamily="@font/arcade_classic"
+                android:text=" character's race"
+                android:textAlignment="center"
+                android:textColor="#dfa00e" />
+
+            <Button
+                android:id="@+id/btHuman"
+                android:layout_width="200dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/ben_oldschool_menu"
+                android:fontFamily="@font/arcade_classic"
+                android:onClick="chooseRace"
+                android:text="Human"
+                android:textColor="#dfa00e" />
+
+            <Button
+                android:id="@+id/btElf"
+                android:layout_width="200dp"
+
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/ben_oldschool_menu"
+                android:fontFamily="@font/arcade_classic"
+                android:onClick="chooseRace"
+                android:text="  Elf (Dext+1, Stmn-1, Knwl-1)"
+                android:textColor="#dfa00e" />
+
+            <Button
+                android:id="@+id/btDwarf"
+                android:layout_width="200dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/ben_oldschool_menu"
+                android:fontFamily="@font/arcade_classic"
+                android:onClick="chooseRace"
+                android:text="  Dwarf (Stmn+1, Dext-1, Intl-1)"
+                android:textColor="#dfa00e" />
+
+            <Button
+                android:id="@+id/btGnome"
+                android:layout_width="200dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/ben_oldschool_menu"
+                android:fontFamily="@font/arcade_classic"
+                android:onClick="chooseRace"
+                android:text="  Gnome (Intl+1,Stam-1, Know-1)"
+                android:textColor="#dfa00e" />
+
+            <Button
+                android:id="@+id/btHalfling"
+                android:layout_width="200dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/ben_oldschool_menu"
+                android:fontFamily="@font/arcade_classic"
+                android:onClick="chooseRace"
+                android:text="  Halfling (Knwl+1, Dext-1, Intl-1)"
+                android:textColor="#dfa00e" />
+
+            <Button
+                android:id="@+id/btOrc"
+                android:layout_width="200dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/ben_oldschool_menu"
+                android:fontFamily="@font/arcade_classic"
+                android:onClick="chooseRace"
+                android:text="Orc (Dext+2, Knwl-4)"
+                android:textColor="#dfa00e" />
+
+            <Button
+                android:id="@+id/btFairy"
+                android:layout_width="200dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/ben_oldschool_menu"
+                android:fontFamily="@font/arcade_classic"
+                android:onClick="chooseRace"
+                android:text="  Fairy (Intl+2, Stmn-4)"
+                android:textColor="#dfa00e" />
+
+            <Button
+                android:id="@+id/btTroll"
+                android:layout_width="200dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/ben_oldschool_menu"
+                android:fontFamily="@font/arcade_classic"
+                android:onClick="chooseRace"
+                android:text="  Troll (Stmn+2, Dext-2, Intl-2)"
+                android:textColor="#dfa00e" />
+
+            <Button
+                android:id="@+id/btTentacular"
+                android:layout_width="200dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/ben_oldschool_menu"
+                android:fontFamily="@font/arcade_classic"
+                android:onClick="chooseRace"
+                android:text="  Tentacular (Knwl+2, Dext-2, Intl-2)"
+                android:textColor="#dfa00e" />
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/llCreationThree"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:visibility="gone"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:fontFamily="@font/arcade_classic"
+            android:text="Now you have to choose your"
+            android:textAlignment="center"
+            android:textColor="#dfa00e" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:fontFamily="@font/arcade_classic"
+            android:text=" character's race"
+            android:textAlignment="center"
+            android:textColor="#dfa00e" />
+
+        <Button
+            android:id="@+id/btPower"
+            android:layout_width="150dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="5dp"
+            android:layout_height="45dp"
+            android:background="@drawable/ben_oldschool_menu"                    android:fontFamily="@font/arcade_classic"
+            android:onClick="chooseStyle"
+            android:text="Power"
+            android:textColor="#dfa00e" />
+        <Button
+            android:id="@+id/btTechnics"
+            android:layout_width="150dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="5dp"
+            android:layout_height="45dp"
+            android:background="@drawable/ben_oldschool_menu"                    android:fontFamily="@font/arcade_classic"
+            android:onClick="chooseStyle"
+            android:text="Technics"
+            android:textColor="#dfa00e" />
+        <Button
+            android:id="@+id/btLooks"
+            android:layout_width="150dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="5dp"
+            android:layout_height="45dp"
+            android:background="@drawable/ben_oldschool_menu"                    android:fontFamily="@font/arcade_classic"
+            android:onClick="chooseStyle"
+            android:text="Looks"
+            android:textColor="#dfa00e" />
+        <Button
+            android:id="@+id/btScience"
+            android:layout_width="150dp"
+            android:layout_height="45dp"
+            android:background="@drawable/ben_oldschool_menu"                    android:layout_gravity="center"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/arcade_classic"
+            android:onClick="chooseStyle"
+            android:text="Science"
+            android:textColor="#dfa00e" />
+        <Button
+            android:id="@+id/btMagic"
+            android:layout_width="150dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="5dp"
+            android:layout_height="45dp"
+            android:background="@drawable/ben_oldschool_menu"                    android:fontFamily="@font/arcade_classic"
+            android:onClick="chooseStyle"
+            android:text="Magic"
+            android:textColor="#dfa00e" />
+    </LinearLayout>
+
+</LinearLayout>

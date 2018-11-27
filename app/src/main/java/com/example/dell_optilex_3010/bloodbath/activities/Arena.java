@@ -1,13 +1,17 @@
 package com.example.dell_optilex_3010.bloodbath.activities;
 
+import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.text.method.ScrollingMovementMethod;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.PopupMenu;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.dell_optilex_3010.bloodbath.R;
@@ -15,13 +19,15 @@ import com.example.dell_optilex_3010.bloodbath.charactercreation.Character;
 import com.example.dell_optilex_3010.bloodbath.combatmechanics.OpponentActions;
 import com.example.dell_optilex_3010.bloodbath.combatmechanics.TestSortControl;
 
+import java.util.List;
 import java.util.Random;
+import java.util.Timer;
 
 public class Arena extends AppCompatActivity {
     private Random dice = new Random(1 - 20);
     private OpponentActions opponentActions = new OpponentActions();
-    private int[] combatVariables = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};  // round counter/player wounds/defender wounds/temporary attacker bonus (dext)/temporary attacker bonus (stmn)/temporary attacker bonus (intl)/temporary attacker bonus (knwl)/temporary defender bonus (dext)/temporary defender bonus (stmn)/temporary defender bonus (intl)/temporary defender bonus (knwl)/round process counter
-    private String[] preparedActionsAndAdvantage = {"", "", "", "", "", "", ""};   // first slot owner/first slot action stocked / second slot owner / second slot action stored / third slot owner / third slot action stored/Advantaged player
+    private int[] combatVariables = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};  // 0 : round counter/1 : player wounds/2 : defender wounds/3 : temporary attacker bonus (dext)/4 : temporary attacker bonus (stmn)/5 : temporary attacker bonus (intl)/6 : temporary attacker bonus (knwl)/7 : temporary defender bonus (dext)/8 : temporary defender bonus (stmn)/9 : temporary defender bonus (intl)/10 : temporary defender bonus (knwl)/11 : round process counter
+    private String[] preparedActionsAndAdvantage = {"", "", "", "", "", "", ""};   //0 :  first slot owner/1 : first slot action stocked /2 :  second slot owner /3 :  second slot action stored /4 :  third slot owner /5 :  third slot action stored/6 : Advantaged player
     private Character player;
     private Character opponent;
     private TestSortControl test;
@@ -29,12 +35,45 @@ public class Arena extends AppCompatActivity {
     private Button startButton;
     private Button actionButton;
     private Button opponentTurn;
+    private ImageView ivToonIdle;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_arena);
-        player = new Character(this);
+        ivToonIdle = findViewById(R.id.ivToonIdle);
+        LinearLayout llBackground = (LinearLayout) findViewById(R.id.llArena);
+        AnimationDrawable adBackground = (AnimationDrawable) llBackground.getBackground();
+        adBackground.setEnterFadeDuration(2500);
+        adBackground.setExitFadeDuration(5000);
+        adBackground.start();
+        AnimationDrawable adToonIdle = (AnimationDrawable) ivToonIdle.getBackground();
+        adToonIdle.setEnterFadeDuration(250);
+        adToonIdle.setExitFadeDuration(250);
+        adToonIdle.start();
+
+
+    }
+
+    public void toonController(View view) {
+        ivToonIdle.setBackgroundResource(R.drawable.player_attack_animation);
+        AnimationDrawable adToonAttack = (AnimationDrawable) ivToonIdle.getBackground();
+        adToonAttack.setEnterFadeDuration(50);
+        adToonAttack.setExitFadeDuration(50);
+        adToonAttack.start();
+    }
+
+}
+
+
+
+
+
+
+
+
+       /* player = new Character(this);
         opponent = new Character(this);
         player.loadCharacter(1);
         opponent.loadCharacter(2);
@@ -123,7 +162,7 @@ public class Arena extends AppCompatActivity {
             startButton.setVisibility(View.VISIBLE);
         }
         combatVariables[11]++;
-    }
-}
+    }*/
+
 
 

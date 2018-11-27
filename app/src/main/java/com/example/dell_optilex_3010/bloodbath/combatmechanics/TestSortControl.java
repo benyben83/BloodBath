@@ -193,7 +193,7 @@ public class TestSortControl {
         reactions.add(player.getActionOne());
         reactions.add(player.getActionTwo());
         reactions.add(player.getActionThree());
-        reactions.add(player.getActionFour()); b
+        reactions.add(player.getActionFour());
         reactions.add(player.getActionFive());
         reactions.add(player.getActionSix());
         reactions.add(player.getActionSeven());
